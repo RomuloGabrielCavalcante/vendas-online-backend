@@ -8,7 +8,7 @@ import { ReturnUserDto } from './dtos/returnUser.dto';
 export class UserController {
 
 
-    constructor(private readonly userService: UserService){}
+    constructor(private readonly userService: UserService) { }
 
 
     @UsePipes(ValidationPipe)
@@ -25,4 +25,3 @@ export class UserController {
 
 }
 
-    
