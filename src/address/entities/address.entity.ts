@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity({ name: 'address'})
-export class addressEntity {
+export class AddressEntity {
     @PrimaryGeneratedColumn('rowid')
     id: number;
 
