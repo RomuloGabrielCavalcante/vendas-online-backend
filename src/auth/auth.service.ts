@@ -12,17 +12,17 @@ import { ReturnLogin } from './dtos/returnLogin.dto';
 
 @Injectable()
 export class AuthService {
-    
-constructor(
-    private readonly userService: UserService, private jwtService: JwtService) {}
+
+    constructor(
+        private readonly userService: UserService, private jwtService: JwtService) { }
 
     async login(loginDto: LoginDto): Promise<ReturnLogin> {
         const user: UserEntity | undefined = await this.userService
-        .findUserByEmail(loginDto.email)
-        .catch(() => undefined);
+            .findUserByEmail(loginDto.email)
+            .catch(() => undefined);
 
 
-    const isMatch = await compare(loginDto.password, user?.password || '');
+        const isMatch = await compare(loginDto.password, user?.password || '');
 
 
         if (!user || !isMatch) {
@@ -30,7 +30,7 @@ constructor(
         }
 
         return {
-            accessToken: this.jwtService.sign({...new LoginPayload(user)}),
+            accessToken: this.jwtService.sign({ ...new LoginPayload(user) }),
             user: new ReturnUserDto(user),
         };
     }
